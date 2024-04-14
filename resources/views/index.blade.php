@@ -7,8 +7,7 @@
 
     @section('content')
 
-        @include('includes.Spinner')
-        @include('includes.navBar')
+
         @include('includes.Carousel')
         @include('includes.Facilities')
         @include('includes.about')

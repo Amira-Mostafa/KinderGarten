@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\NavController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,7 +23,12 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::view('/index', 'index');
+Route::get('/home', [HomeController::class, 'index'])->name('index');
+Route::get('/aboutUs', [NavController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/classes', [NavController::class, 'classes'])->name('classes');
+Route::get('/facilities', [NavController::class, 'facilities'])->name('facilities');
+Route::get('/team', [NavController::class, 'team'])->name('team');
+Route::get('/callToAction', [NavController::class, 'callToAction'])->name('callToAction');
+Route::get('/appointment', [NavController::class, 'appointment'])->name('appointment');
+Route::get('/testimonial', [NavController::class, 'testimonial'])->name('testimonial');
+Route::get('/contact', [NavController::class, 'contact'])->name('contact');
