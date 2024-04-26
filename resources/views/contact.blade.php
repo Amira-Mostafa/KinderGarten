@@ -10,5 +10,5 @@
 
 @section('content')
        @include('includes.pageHeader')
-       @include('includes.team')
+       @include('includes.contact')
 @endsection

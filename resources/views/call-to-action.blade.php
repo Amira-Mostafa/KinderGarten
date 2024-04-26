@@ -4,11 +4,13 @@
     Teachers Page
 @endsection
 
+
 @section('header')
     Become a Teacher!
-@endsection
+@endsection 
+
 
 @section('content')
        @include('includes.pageHeader')
-       @include('includes.team')
+       @include('includes.callToAction')
 @endsection

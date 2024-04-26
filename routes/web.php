@@ -32,3 +32,4 @@ Route::get('/callToAction', [NavController::class, 'callToAction'])->name('callT
 Route::get('/appointment', [NavController::class, 'appointment'])->name('appointment');
 Route::get('/testimonial', [NavController::class, 'testimonial'])->name('testimonial');
 Route::get('/contact', [NavController::class, 'contact'])->name('contact');
+Route::view('/dashboard', 'dashboard');
