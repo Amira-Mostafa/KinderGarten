@@ -28,6 +28,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $uri = '';
+        if($request->user()->is_admin == 1){
+            $uri ='admin/home';
+        }else{
+            $uri = 'user/home';
+        }
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

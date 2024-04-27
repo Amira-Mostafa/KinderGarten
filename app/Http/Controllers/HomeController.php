@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//namespace App\Http\Controllers\Auth; 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('home');
+    }
+    public function adminHome()
+    {
+        return view('admin.home');
     }
 }

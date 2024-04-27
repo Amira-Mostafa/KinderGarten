@@ -8,7 +8,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a href="{{ route('index') }}" class="navbar-brand">
+                <a href="{{ route('home') }}" class="navbar-brand">
                     <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
