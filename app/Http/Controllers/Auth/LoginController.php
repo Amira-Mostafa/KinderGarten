@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /*
@@ -38,30 +39,43 @@ class LoginController extends Controller
     }
 
 
-//     public function login(Request $request){
-//         $input = $request->all();
-//         $this->validate ($request,[
-//             'email' => 'required',
-//             'password' => 'required',
-//         ]);
+    public function login(Request $request){
+        $input = $request->all();
+        $this->validate ($request,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
-//         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
-//                 if(auth()->user()->is_Admin == 1){
-                
-//                 return to_route('admin.home');
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
+           $roleType = auth()->user()->is_admin;
+                if($roleType == 1){
+                return redirect('/adminDashboard');
+                // }elseif($roleType == 2){
+                //     return redirect()->route('teacher');
+                }elseif($roleType == 3){
+                    return redirect('/dashboard');
+                }else{
+                 return to_route('login')->with('input is invalid');
+                }
+        }
+     }
 
-//                 }else{
-//                     return to_route('home');
-//             }
-//         }else{
-//             return to_route('login')->with('input is invalid');
-//         }
-// }
-};
-
-
-
+}
     
 
 
 
+// if(!auth()->check()){
+
+        //     return redirect()->route('login');
+        //  }
+        //  $userRole = Auth::user()->is_admin;
+        //  if($userRole == 1){
+        //      return $next($request);
+        //  }elseif($userRole == 2){
+        //      return redirect()->route('teacher');
+        //  }elseif($userRole == 3){
+        //     return redirect()->route('dashboard');
+        //  }
+             
+         

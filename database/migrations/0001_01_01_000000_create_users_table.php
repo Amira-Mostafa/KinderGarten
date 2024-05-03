@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->tinyInteger('is_admin')->default(0);
+            $table->tinyInteger('is_admin')->default(3);  //1- admin 2- teacher 3- noramal user
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -5,8 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NavController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\isAdmin;
+use App\Http\Middleware\isTeacher;
+use App\Http\Middleware\isNormal;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,7 +16,13 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard')->middleware(['auth','verified']);
+
+
+// Route::get('teacher', function () {
+//     return view('teacher');
+// })->middleware(['auth', 'verified'])->name('teacher');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -27,14 +35,11 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
-Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('is_Admin');
+Route::get('/adminDashboard', [HomeController::class, 'admin'])->middleware(['auth', 'isAdmin']);
 
-Route::get('/admin/home', [AdminController::class, 'admin'])->name('admin.home')->middleware('is_Admin');
-Route::get('/user/home', [UserController::class, 'UserHome'])->name('user.home');
+//Route::get('/becomeATeacher', [HomeController::class, 'dashboard'])->name('dashboard');
 
-
-
+Route::get('/home', [NavController::class, 'index'])->name('home');
 Route::get('/aboutUs', [NavController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/classes', [NavController::class, 'classes'])->name('classes');
 Route::get('/facilities', [NavController::class, 'facilities'])->name('facilities');

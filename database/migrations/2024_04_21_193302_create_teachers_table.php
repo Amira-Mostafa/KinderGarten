@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->teacherName();
+            $table->teacherAge();
+            $table->teacherFB();
+            $table->teacherInsta();
+            $table->
         });
     }
 

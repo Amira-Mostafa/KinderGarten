@@ -28,14 +28,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $uri = '';
+        
+      //storing auth with if condition
+
         if($request->user()->is_admin == 1){
-            $uri ='admin/home';
-        }else{
-            $uri = 'user/home';
-        }
-        return redirect()->intended(route('dashboard', absolute: false));
+
+            return redirect('/adminDashboard');
+    
+            }else{
+                return redirect()->intended(route('dashboard'));   
+            }  
     }
+    
 
     /**
      * Destroy an authenticated session.
