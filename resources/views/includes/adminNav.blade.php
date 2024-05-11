@@ -1,7 +1,7 @@
 
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-          
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+
                 <a href="{{ route('home') }}" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
             </a>
@@ -11,18 +11,17 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                     <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
-                    <a href="{{ route('classes') }}" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
+                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                                <a href="{{ route('facilities') }}" class="dropdown-item">School Facilities</a>
-                                <a href="{{ route('team') }}" class="dropdown-item">Popular Teachers</a>
-                                <a href="{{ route('callToAction') }}" class="dropdown-item">Become A Teachers</a>
-                                <a href="{{ route('testimonial') }}" class="dropdown-item">Testimonial</a>
+                                <a href="{{ route('teachers') }}" class="dropdown-item">teachers</a>
+                                <a href="{{ route('addTeacher') }}" class="dropdown-item">add teacher</a>
+                                <a href="{{ route('subjects') }}" class="dropdown-item">subjects</a>
+                                <a href="#" class="dropdown-item">add subject</a>
+                                <a href="{{ route('classes') }}" class="dropdown-item">classes</a>
+                                <a href="#" class="dropdown-item">add class</a>
                             </div>
                     </div>
-
-
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

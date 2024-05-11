@@ -3,6 +3,9 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NavController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +53,18 @@ Route::get('/testimonial', [NavController::class, 'testimonial'])->name('testimo
 Route::get('/contact', [NavController::class, 'contact'])->name('contact');
 
 Route::view('/dashboard', 'dashboard');
+
+
+Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers');
+Route::get('/addTeacher', [TeacherController::class, 'create'])->name('addTeacher');
+Route::post('/store', [TeacherController::class , 'store'])->name('storeTeacher');
+Route::get('/showTeacher/{id}',[TeacherController::class, 'show'])->name('showTeacher');
+Route::get('/editTeacher/{id}', [TeacherController::class, 'edit'])->name('editTeacher');
+Route::get('/updateTeacher', [TeacherController::class, 'update'])->name('updateTeacher');
+Route::get('/deleteTeacher', [TeacherController::class, 'delete']);
+
+
+
+Route::get('/subjects', [SubjectController::class], 'index')->name('subjects');
+Route::get('/classes', [ClassController::class], 'index')->name('classes');
+

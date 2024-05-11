@@ -7,6 +7,7 @@
 <body>
     <div class="container-xxl bg-white p-0">
     @include('includes.adminNav')
+    <!-- @include('includes.adminSidebar') -->
 
 
 
