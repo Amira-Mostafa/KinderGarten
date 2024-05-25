@@ -13,7 +13,6 @@
       <tr>   
         <th>Fullname</th>
         <th>Email</th>
-        <th>DOB</th>
         <th>First Preference</th>
         <th>Second Preference</th>
         <th>Active</th>
@@ -29,10 +28,11 @@
       <tr>
         <td>{{ $rows->name}}</td>
         <td>{{ $rows->email}}</td>
-        <td>{{ $rows->DOB}}</td>
-        <td>{{ $rows->subject->first}}</td>
-        <td>{{ $rows->subject->second}}</td>
-        <td>{{ $rows->active ? 'true': 'false'}}</td>
+        @foreach($rows->subjects as $sub)
+          <td>{{ $sub->subject }}#{{$sub->class->subject_id}}</td>
+        @endforeach
+
+        <td>{{ $rows->active ==1 ? 'true': 'false'}}</td>
         <td><a href="showTeacher/{{ $rows->id}}">Show</a></td>
         <td><a href="editTeacher/{{ $rows->id}}">Edit</a></td>
         <td><a href="deleteTeacher/{{ $rows->id}}">Delete</a></td>

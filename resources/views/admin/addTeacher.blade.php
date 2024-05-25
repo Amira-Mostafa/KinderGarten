@@ -4,7 +4,7 @@
 
 
 <div class="container px-4 px-lg-5 py-lg-0">
-<h2 class="ml-50">Add Teacher</h2>
+<h2 class="ml-50">Become a Teacher</h2>
     <br/>
 
     <form action="{{ route('storeTeacher') }}" method="POST" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
@@ -27,20 +27,11 @@
 
         </div>
 
-        <div class="item form-group">
-            <label for="category" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 1<span class="required">*</span></label>
-            <select name="subject" id="">
-                <option value="">select subject</option> 
-                @foreach($subjects as $sub)
-                <option value="{{ $sub->id }}">{{ $sub->subject}}</option> 
-                @endforeach
-            </select>
-            </div>
 
             <div class="item form-group">
-            <label for="category" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 2<span class="required">*</span></label>
+            <label for="category" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 1<span class="required">*</span></label>
             <select name="subject_id" id="">
-                <option value="subject_id">select subject</option> 
+                <option value="">select subject</option> 
                 @foreach($subjects as $sub)
                   <option value="{{ $sub->id }}">{{ $sub->subject}}</option> 
                 @endforeach

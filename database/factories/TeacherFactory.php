@@ -1,7 +1,8 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Teacher;
+use App\Models\Subject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,7 +25,7 @@ class TeacherFactory extends Factory
             'insta' => fake()->safeEmail(),
             'twitter' => fake()->safeEmail(),
             'profileImage' => fake()->imageUrl(800,600),
-            'active'=> fake()->randomDigit(),
+            'active'=> fake()->numberBetween($min = 1, $max = 0),
             
         ];
     }

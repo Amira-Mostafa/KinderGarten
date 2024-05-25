@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Teacher;
 use App\Models\Subject;
+use Database\Seeders\factory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Nette\Utils\Random;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,29 +17,36 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        
-
+    {      
         User::factory(10)->create();
 
-        //Teacher::factory()->count(10)->create()->each(function(Teacher $teacher) {
-                                //     Subject::factory()
-                                //         ->count(2)
-                                //         ->create([
-                                //             'teacher_id' => $teacher->id,
-                                //         ]);
-                                // });
-
-            
-            
-            
-        //Teacher::factory(10)->create();
-        Teacher::factory()->has(Subject::factory()->count(5))->count(10)->create();
-        // Adding ->count(5) will create 5 tasks per user
-            
+        // Populate subjects
         Subject::factory(10)->create();
 
-        User::factory()->create([
+        // Populate teachers
+        Teacher::factory(10)->create();
+
+        // Get all the teachers attaching up to 3 random subject to each teacher
+        $teachers = Teacher::all();
+
+        // Populate the pivot table
+                
+                 
+                 foreach($teachers as $teacher){
+                    $teacher->subjects()->attach(
+                        Subject::inRandomOrder()->take(2)->pluck('id'),[
+                            'preference' => fake()->numberBetween($min = 1, $max = 2),
+                            'price' => fake()->randomDigit(),
+                            'ageGroup' => fake()->unique()->randomDigit(),
+                            'time' => fake()->randomDigit(),
+                            'capacity' => fake()->randomDigit(),
+                            'active' => rand(0,1), //doesnt take fake
+                        ]
+                    );
+                }
+
+    
+          User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
@@ -44,19 +54,11 @@ class DatabaseSeeder extends Seeder
         Subject::factory()->create([
             'subject' => 'art & drawing',
             'subImage' => 'testexamplecom',
-        ]);
-
-        
+        ],
+            );
 
     }
 }
-// public function run()
-// {
-//     factory(App\User::class, 50)->create()->each(function ($u) {
-//         $u->roles()->save(factory(App\Role::class)->make());
-//     });
 
-//     factory(App\Role::class, 20)->create()->each(function ($u) {
-//         $u->users()->save(factory(App\User::class)->make());
-//     });
-// }
+
+       

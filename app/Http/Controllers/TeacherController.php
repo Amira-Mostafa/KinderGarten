@@ -23,28 +23,32 @@ class TeacherController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {   
-       $subjects = Subject::select('id', 'subject')->get();
-       return view('admin.addTeacher', compact('subjects'));
+    {
+        $subjects = Subject::select('id', 'subject')->get();
+        return view('admin.addTeacher', compact('subjects'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'name'=> 'required|string|max:20',
-            // 'Fsubject' => 'required',
-            // 'Ssubject' => 'required',
-            //'profileImage' => 'required|max:2048',
-
+            'name' => 'required|string|max:20',
+            'email' => 'required',
+            'profileImage' => 'required|max:2048',
+            'subject_id' => 'required|array',
+            'subject_id.*' => [
+                'required',
+                'exists:subjects,id',
+                'unique:teacher_subject,subject_id',
+            ],
+        ], [
+            'subject_id.*.exists' => 'Your message here',
         ]);
+
         Teacher::create($data);
         return redirect('teachers');
-
-
-        
     }
 
     /**
@@ -52,7 +56,7 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-        $teachers = Teacher::findOrFail($id);
+        $teachers = Teacher::with('subjects')->findOrFail($id);
         return view('admin.showTeacher', compact('teachers'));
     }
 
@@ -88,3 +92,6 @@ class TeacherController extends Controller
         //
     }
 }
+// <div class="col-md-7 col-7">
+// <p>First preference: {{ $teachers->subjects[0]->subject }}</p>
+// </div>

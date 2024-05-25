@@ -11,14 +11,14 @@
                 <div class="team-single-img">
                     <img src="{{ asset('assets/https://bootdey.com/img/Content/avatar/avatar7.png')}}" alt="{{ $teachers->name}}">
                 </div>
-                
+
             </div>
 
 
 
             <div class="col-lg-8 col-md-7">
                 <div class="team-single-text padding-50px-left sm-no-padding-left">
-                    <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $teachers->name}}</h4>
+                    <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $teachers->name }}</h4>
                     <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>
                     <div class="contact-info-section margin-40px-tb">
                         <ul class="list-style9 no-margin">
@@ -30,49 +30,29 @@
                                         <strong class="margin-10px-left text-orange">Email</strong>
                                     </div>
                                     <div class="col-md-7 col-7">
-                                        <p>{{ $teachers->email}}</p>
+                                        <p>{{ $teachers->email }}</p>
                                     </div>
                                 </div>
                             </li>
 
+                            @if($teachers->subjects->count() >= 0)
+                            @foreach($teachers->subjects as $sub)
                             <li>
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="far fa-envelope text-yellow"></i>
-                                        <strong class="margin-10px-left text-yellow">Date Of Birth</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>{{ $teachers->DOB}}</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-
                                 <div class="row">
                                     <div class="col-md-5 col-5">
                                         <i class="far fa-envelope text-lightred"></i>
-                                        <strong class="margin-10px-left text-lightred">First Teaching Preference</strong>
+                                        <strong class="margin-10px-left text-lightred">Teaching Preferences no: {{ $sub->class->preference }}</strong>
                                     </div>
                                     <div class="col-md-7 col-7">
-                                        <p>{{ $teachers->Fsubject}}</p>
+                                        <p>{{ $sub->subject }}</p>
                                     </div>
                                 </div>
                             </li>
-
+                            @endforeach
+                            @else
+                            <p>No subject preference are assigned</p>
+                            @endif
                             <li>
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fas fa-envelope text-green"></i>
-                                        <strong class="margin-10px-left text-green">Second Teaching Preference</strong>
-                                    </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>{{ $teachers->Ssubject}}</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                           <li>
                                 <div class="row">
                                     <div class="col-md-5 col-5">
                                         <i class="fas fa-envelope text-pink"></i>
@@ -108,17 +88,17 @@
                         </ul>
                     </div>
 
-                   
 
-                        
-                    </div>
+
 
                 </div>
-            </div>
 
-            
+            </div>
         </div>
+
+
     </div>
+</div>
 </div>
 <br><br>
 

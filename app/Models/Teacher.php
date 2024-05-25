@@ -9,7 +9,7 @@ class Teacher extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
 
         'name',
         'email',
@@ -21,17 +21,19 @@ class Teacher extends Model
 
     ];
 
-    public function subjects(){
+    public function subjects()
+    {
 
-        return $this->belongsToMany(Subject::class, 'teacher_subject', 'teacher_id','subject_id')->withPivot('price', 'ageGroup', 'time', 'capacity');
 
-
+        return $this->belongsToMany(Subject::class, 'teacher_subject', 'teacher_id', 'subject_id')
+            ->withPivot('preference', 'price', 'ageGroup', 'time', 'capacity', 'active')->orderBy('preference', 'asc')
+            ->as('class');
     }
 
 
 
 
-
+    //->orderBy('teacher_subject.preference', 'desc');
 
 
 

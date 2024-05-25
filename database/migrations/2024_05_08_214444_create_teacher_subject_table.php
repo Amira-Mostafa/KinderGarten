@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('teacher_id')->constrained('teachers');
             $table->foreignId('subject_id')->constrained('subjects');
-            $table->float('price');
-            $table->char('ageGroup');
-            $table->time('time', 0);
-            $table->integer('capacity');
+            $table->integer('preference');
+            $table->float('price')->nullable();
+            $table->char('ageGroup')->nullable();
+            $table->time('time')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }
