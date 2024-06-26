@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('includes.head')
+@include('includes.head')
 
 
 <body>
     <div class="container-xxl bg-white p-0">
-    @include('includes.adminNav')
-    <!-- @include('includes.adminSidebar') -->
+        @include('includes.adminNav')
+        <!-- @include('includes.adminSidebar') -->
 
 
 
-    @yield('content')
+        @yield('content')
 
 
 
 
-    @include('includes.Footer')
+        @include('includes.Footer')
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>

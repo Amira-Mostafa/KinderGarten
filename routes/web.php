@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard')->middleware(['auth','verified']);
+})->name('dashboard')->middleware(['auth', 'verified']);
 
 
 // Route::get('teacher', function () {
@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes();
 
@@ -57,14 +57,13 @@ Route::view('/dashboard', 'dashboard');
 
 Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers');
 Route::get('/addTeacher', [TeacherController::class, 'create'])->name('addTeacher');
-Route::post('/store', [TeacherController::class , 'store'])->name('storeTeacher');
-Route::get('/showTeacher/{id}',[TeacherController::class, 'show'])->name('showTeacher');
+Route::post('/storeTeacher', [TeacherController::class, 'store'])->name('storeTeacher');
+Route::get('/showTeacher/{id}', [TeacherController::class, 'show'])->name('showTeacher');
 Route::get('/editTeacher/{id}', [TeacherController::class, 'edit'])->name('editTeacher');
-Route::get('/updateTeacher', [TeacherController::class, 'update'])->name('updateTeacher');
+Route::Put('/updateTeacher', [TeacherController::class, 'update'])->name('updateTeacher');
 Route::get('/deleteTeacher', [TeacherController::class, 'delete']);
 
 
 
 Route::get('/subjects', [SubjectController::class], 'index')->name('subjects');
 Route::get('/classes', [ClassController::class], 'index')->name('classes');
-

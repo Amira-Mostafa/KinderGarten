@@ -38,17 +38,18 @@ class TeacherController extends Controller
             'email' => 'required',
             'profileImage' => 'required|max:2048',
             'subject_id' => 'required|array',
-            'subject_id.*' => [
-                'required',
-                'exists:subjects,id',
-                'unique:teacher_subject,subject_id',
-            ],
-        ], [
-            'subject_id.*.exists' => 'Your message here',
+            // 'subject_id.*' => [
+            //     'required',
+            //     'exists:subjects,id',
+            //     'unique:teacher_subject,subject_id',
+            // ],
+            // ], [
+            //     'subject_id.*.exists' => 'Your message here',
         ]);
 
-        Teacher::create($data);
-        return redirect('teachers');
+        // Teacher::create($data);
+        // return redirect('teachers');
+        return dd($data);
     }
 
     /**
@@ -63,19 +64,16 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
     public function edit(string $id)
     {
-        $teachers = Teacher::findOrfail($id);
-        $subjects = Subject::select('id', 'subject')->get();
+        $teachers = Teacher::with('subjects')->findOrFail($id);
+        $allSubjects = Subject::select('id', 'subject')->get();
 
-        //dd($teachers);
-        //$subjects  = Subject::select('subject_id', 'teacher_id')->first();
-        //$subjects  = Subject::where('id', $id)->first();
-        // Car::where('id', $id)->
-        return view('admin.editTeacher', compact('teachers', 'subjects'));
+        // dd($teachers);
+        return view('admin.editTeacher', compact('teachers', 'allSubjects'));
     }
-    // <!-- @selected($sub->id == optional($teachers->subjects)->subject_id) -->
-    // <!-- @selected($sub->id == $teachers->subjects->subject_id) -->
+
     /**
      * Update the specified resource in storage.
      */

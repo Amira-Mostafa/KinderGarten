@@ -7,6 +7,7 @@
 <div class="container">
     <div class="team-single">
         <div class="row">
+
             <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
                 <div class="team-single-img">
                     <img src="{{ asset('assets/https://bootdey.com/img/Content/avatar/avatar7.png')}}" alt="{{ $teachers->name}}">
@@ -40,7 +41,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-md-5 col-5">
-                                        <i class="far fa-envelope text-lightred"></i>
+                                        <i class="fas fa-envelope text-lightred"></i>
                                         <strong class="margin-10px-left text-lightred">Teaching Preferences no: {{ $sub->class->preference }}</strong>
                                     </div>
                                     <div class="col-md-7 col-7">

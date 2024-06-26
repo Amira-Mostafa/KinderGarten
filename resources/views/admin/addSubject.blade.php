@@ -6,12 +6,12 @@
     <input type="text" name="lastname" placeholder="lastname" id="lastname">
 
     <label for="select">select a race</label>
-        <p>fun run</p>
-        <input type="radio" name="race">
-        <p>Half Marathon</p>
-        <input type="radio" name="race">
-        <p>Full Marathon</p>
-        <input type="radio" name="race">
+    <p>fun run</p>
+    <input type="radio" name="race">
+    <p>Half Marathon</p>
+    <input type="radio" name="race">
+    <p>Full Marathon</p>
+    <input type="radio" name="race">
 
     <label for="lastname">last name</label>
     <input type="text" name="lastname" placeholder="lastname" id="lastname">
