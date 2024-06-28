@@ -85,11 +85,29 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) //softDelete (it still in the db)
     {
-        //
+        Teacher::where('id', $id)->delete(); //softDelete
+        return redirect('teachers');
+    }
+
+    public function trashed() //shows the soft deleted items
+    {
+        $teachers = Teacher::onlyTrashed()->get();
+        return view('admin.trashed', compact('teachers'));
+    }
+    public function restore(string $id)
+    {
+        Teacher::where('id', $id)->restore();
+        return redirect('teachers');
+    }
+    public function forceDelete(string $id)
+    {
+        Teacher::where('id', $id)->forceDelete();
+        return redirect('trashed');
     }
 }
+
 // <div class="col-md-7 col-7">
 // <p>First preference: {{ $teachers->subjects[0]->subject }}</p>
 // </div>

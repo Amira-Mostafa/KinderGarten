@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('teacher_subject', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->constrained('teachers');
-            $table->foreignId('subject_id')->constrained('subjects');
+            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->integer('preference');
             $table->float('price')->nullable();
             $table->char('ageGroup')->nullable();
@@ -31,5 +31,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('teacher_subject');
+        // Schema::table('teacher-subject', function (Blueprint $table) {
+        //     $table->dropForeign(['teacher_id']);
+        //     $table->dropForeign(['subject_id']);
+        // });
     }
 };

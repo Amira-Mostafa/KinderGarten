@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('insta')->nullable();
             $table->string('profileImage', 100);
             $table->boolean('active')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,7 +38,4 @@ return new class extends Migration
 };
 
             // $table->float('price');
-            // $table->foreignId('category_id')->constrained('categories');
-            // // $table->foreignId('user-Id')->constrained('users');
-            // $table->softDeletes();
             // $table->foreignId('user_id')->nullable()->index();

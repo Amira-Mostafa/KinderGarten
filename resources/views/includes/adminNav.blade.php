@@ -19,6 +19,7 @@
                     <a href="#" class="dropdown-item">add subject</a>
                     <a href="{{ route('classes') }}" class="dropdown-item">classes</a>
                     <a href="#" class="dropdown-item">add class</a>
+                    <a href="{{ route('trashed') }}" class="dropdown-item">droped items</a>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

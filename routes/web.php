@@ -61,7 +61,10 @@ Route::post('/storeTeacher', [TeacherController::class, 'store'])->name('storeTe
 Route::get('/showTeacher/{id}', [TeacherController::class, 'show'])->name('showTeacher');
 Route::get('/editTeacher/{id}', [TeacherController::class, 'edit'])->name('editTeacher');
 Route::Put('/updateTeacher', [TeacherController::class, 'update'])->name('updateTeacher');
-Route::get('/deleteTeacher', [TeacherController::class, 'delete']);
+Route::get('/deleteTeacher/{id}', [TeacherController::class, 'destroy']);
+Route::get('/trashed', [TeacherController::class, 'trashed'])->name('trashed');
+Route::get('/restore/{id}', [TeacherController::class, 'restore']);
+Route::get('/finalDelete/{id}', [TeacherController::class, 'forceDelete']);
 
 
 
