@@ -7,7 +7,8 @@
     <h2 class="ml-50">Edit Teacher</h2>
     <br />
 
-    <form action="{{ route('updateTeacher', $teachers->id) }}" method="Post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+
+    <form action="{{ route('updateTeacher', $teachers->id) }}" method="POST" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
         @csrf
         @method("put")
 
@@ -15,7 +16,7 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="first-name" required="required" class="form-control" name="name" value="{{ $teachers->name}}">
+                <input type="text" id="first-name" required="required" class="form-control" name="name" value="{{ $teachers->name }}">
             </div>
 
             <div class="item form-group">
@@ -31,7 +32,7 @@
         <div class="item form-group">
             <label for="subject" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence<span class="required">*</span></label>
             <div class="col-md-6 col-sm-6">
-                <select name="subject[]" id="subject_{{$rows->id}}" class="col-md-3 col-sm-3 form-control">
+                <select name="subjects[]" id="subject_{{$rows->id}}" class="col-md-3 col-sm-3 form-control">
                     <option value="">select subject</option>
                     @foreach($allSubjects as $subject)
                     <option value="{{ $subject->id }}" @if($subject->id == $rows->class->subject_id) selected @endif>{{ $subject->subject}}</option>
@@ -40,7 +41,6 @@
             </div>
         </div>
         @endforeach
-
 
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="fb">Facebook Account link<span class="required">*</span>
@@ -75,22 +75,27 @@
             </div>
         </div>
 
+
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="password">Profile Image <span class="required">*</span>
-                <div class="col-md-6 col-sm-6 ">
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Profile Image <span class="required">*</span>
+                <div class="">
                     <input type="file" class="form-control" id="image" placeholder="Enter Image" name="image" value="{{ old('image') }}">
-                    <img src="{{asset('assets/images/'.$teachers->image)}}" alt="teacherImage">
+                    <br>
+                    <img src="{{asset('assets/images/'.$teachers->image)}}" class="img-fluid" alt="{{ $teachers->name }}">
                 </div>
         </div>
-</div>
 
+
+</div>
 
 <div class="ln_solid"></div>
 
 <div class="item form-group">
     <div class="col-md-6 col-sm-6 offset-md-3">
+        <br>
         <button class="btn btn-primary" type="button">Cancel</button>
         <button type="submit" class="btn btn-success">Update</button>
+        <br>
     </div>
 </div>
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations
      */
 
     public function up(): void
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('fb');
             $table->string('twitter')->nullable();
             $table->string('insta')->nullable();
-            $table->string('profileImage', 100);
+            $table->string('image', 100);
             $table->boolean('active')->default(0);
             $table->softDeletes();
             $table->timestamps();

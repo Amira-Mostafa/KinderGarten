@@ -1,10 +1,12 @@
 @extends('layouts.adminDashboard')
-
-
 @section('content')
-
 <hr>
-<br>
+@if (session('success'))
+<div class="alert alert-success text-center">
+  {{ session('success') }}
+</div>
+@endif
+<br><br>
 <div class="container">
   <h2>Teachers Applications list</h2>
   <br>

@@ -42,31 +42,29 @@ Route::get('/adminDashboard', [HomeController::class, 'admin'])->middleware(['au
 
 //Route::get('/becomeATeacher', [HomeController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/home', [NavController::class, 'index'])->name('home');
-Route::get('/aboutUs', [NavController::class, 'aboutUs'])->name('aboutUs');
-Route::get('/classes', [NavController::class, 'classes'])->name('classes');
-Route::get('/facilities', [NavController::class, 'facilities'])->name('facilities');
-Route::get('/team', [NavController::class, 'team'])->name('team');
-Route::get('/callToAction', [NavController::class, 'callToAction'])->name('callToAction');
-Route::get('/appointment', [NavController::class, 'appointment'])->name('appointment');
-Route::get('/testimonial', [NavController::class, 'testimonial'])->name('testimonial');
-Route::get('/contact', [NavController::class, 'contact'])->name('contact');
+Route::get('home', [NavController::class, 'index'])->name('home');
+Route::get('aboutUs', [NavController::class, 'aboutUs'])->name('aboutUs');
+Route::get('classes', [NavController::class, 'classes'])->name('classes');
+Route::get('facilities', [NavController::class, 'facilities'])->name('facilities');
+Route::get('team', [NavController::class, 'team'])->name('team');
+Route::get('callToAction', [NavController::class, 'callToAction'])->name('callToAction');
+Route::get('appointment', [NavController::class, 'appointment'])->name('appointment');
+Route::get('/', [NavController::class, 'testimonial'])->name('testimonial');
+Route::get('contact', [NavController::class, 'contact'])->name('contact');
 
 Route::view('/dashboard', 'dashboard');
-
-
-Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers');
-Route::get('/addTeacher', [TeacherController::class, 'create'])->name('addTeacher');
-Route::post('/storeTeacher', [TeacherController::class, 'store'])->name('storeTeacher');
-Route::get('/showTeacher/{id}', [TeacherController::class, 'show'])->name('showTeacher');
-Route::get('/editTeacher/{id}', [TeacherController::class, 'edit'])->name('editTeacher');
-Route::Put('/updateTeacher', [TeacherController::class, 'update'])->name('updateTeacher');
-Route::get('/deleteTeacher/{id}', [TeacherController::class, 'destroy']);
-Route::get('/trashed', [TeacherController::class, 'trashed'])->name('trashed');
-Route::get('/restore/{id}', [TeacherController::class, 'restore']);
-Route::get('/finalDelete/{id}', [TeacherController::class, 'forceDelete']);
-
-
+Route::middleware(['web'])->group(function () {
+    Route::get('teachers', [TeacherController::class, 'index'])->name('teachers');
+    Route::get('addTeacher', [TeacherController::class, 'create'])->name('addTeacher');
+    Route::post('storeTeacher', [TeacherController::class, 'store'])->name('storeTeacher');
+    Route::get('showTeacher/{id}', [TeacherController::class, 'show'])->name('showTeacher');
+    Route::get('editTeacher/{id}', [TeacherController::class, 'edit'])->name('editTeacher');
+    Route::Put('update/{id}', [TeacherController::class, 'update'])->name('updateTeacher');
+    Route::get('deleteTeacher/{id}', [TeacherController::class, 'destroy']);
+    Route::get('trashed', [TeacherController::class, 'trashed'])->name('trashed');
+    Route::get('restore/{id}', [TeacherController::class, 'restore']);
+    Route::get('finalDelete/{id}', [TeacherController::class, 'forceDelete']);
+});
 
 Route::get('/subjects', [SubjectController::class], 'index')->name('subjects');
 Route::get('/classes', [ClassController::class], 'index')->name('classes');

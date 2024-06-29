@@ -10,12 +10,10 @@
 
             <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
                 <div class="team-single-img">
-                    <img src="{{ asset('assets/https://bootdey.com/img/Content/avatar/avatar7.png')}}" alt="{{ $teachers->name}}">
+                    <img src="{{ asset('assets/images/' . $teachers->image)}}" class="img-fluid" alt="{{ $teachers->name}}">
                 </div>
 
             </div>
-
-
 
             <div class="col-lg-8 col-md-7">
                 <div class="team-single-text padding-50px-left sm-no-padding-left">

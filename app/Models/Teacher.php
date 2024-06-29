@@ -18,7 +18,7 @@ class Teacher extends Model
         'fb',
         'twitter',
         'insta',
-        'profileImage',
+        'image',
         'active',
 
     ];
