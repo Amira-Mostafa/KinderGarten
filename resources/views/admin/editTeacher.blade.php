@@ -17,12 +17,22 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="text" id="first-name" required="required" class="form-control" name="name" value="{{ $teachers->name }}">
+                @error('name')
+                <div class="alert alert-warning">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
 
             <div class="item form-group">
                 <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email<span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 ">
                     <input id="email" class="form-control" type="email" name="email" required="required" value="{{ $teachers->email }}">
+                    @error('email')
+                    <div class="alert alert-warning">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
             </div>
 
@@ -47,6 +57,11 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="link" id="user-link" name="fb" class="form-control" value="{{ $teachers->fb }}">
+                @error('fb')
+                <div class="alert alert-warning">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
         </div>
 
@@ -55,6 +70,11 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="link" id="user-link" name="twitter" value="{{ $teachers->twitter }}" class="form-control">
+                @error('twitter')
+                <div class="alert alert-warning">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
         </div>
 
@@ -63,6 +83,11 @@
             </label>
             <div class="col-md-6 col-sm-6 ">
                 <input type="link" id="user-link" name="insta" value="{{ $teachers->insta }}" class="form-control">
+                @error('insta')
+                <div class="alert alert-warning">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
         </div>
 
@@ -80,8 +105,14 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Profile Image <span class="required">*</span>
                 <div class="">
                     <input type="file" class="form-control" id="image" placeholder="Enter Image" name="image" value="{{ old('image') }}">
+                    @error('image')
+                    <div class="alert alert-warning">
+                        {{$message}}
+                    </div>
+                    @enderror
                     <br>
                     <img src="{{asset('assets/images/'.$teachers->image)}}" class="img-fluid" alt="{{ $teachers->name }}">
+
                 </div>
         </div>
 

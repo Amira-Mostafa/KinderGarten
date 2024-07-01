@@ -13,7 +13,7 @@
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 ">
-                <input type="text" id="first-name" required="required" class="form-control" name="name" value="{{old('name')}}">
+                <input type="text" id="first-name" class="form-control" name="name" value="{{old('name')}}">
                 @error('name')
                 <div class="alert alert-warning">
                     {{ $message }}
@@ -24,7 +24,7 @@
             <div class="item form-group">
                 <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email<span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 ">
-                    <input id="email" class="form-control" type="email" name="email" required="required" value="{{old('email')}}">
+                    <input id="email" class="form-control" type="email" name="email" value="{{old('email')}}">
                     @error('email')
                     <div class="alert alert-warning">
                         {{ $message }}
@@ -33,7 +33,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="item form-group">
             <label for="subject_1" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 1<span class="required">*</span></label>
@@ -54,6 +53,8 @@
                 @endforeach
             </select>
         </div>
+
+
 
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="fb">Facebook Account link<span class="required">*</span>

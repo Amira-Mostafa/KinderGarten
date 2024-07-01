@@ -39,8 +39,8 @@ class TeacherController extends Controller
         $message = $this->messages();
         $data = $request->validate([
             'name' => 'required|string|max:20',
-            'email' => 'sometimes|email',
-            'image' => 'sometimes|image|max:2048',
+            'email' => 'required|email',
+            'image' => 'required|image|max:2048',
             'fb' => 'required|url',
             'twitter' => 'required|url',
             'insta' => 'required|url',
@@ -57,7 +57,6 @@ class TeacherController extends Controller
         foreach ($subjects as $index => $subjectId) {
             $teacher->subjects()->attach($subjectId, ['preference' => $index + 1]);
         }
-
         return redirect()->route('teachers')->with('success', 'Teacher was created successfully');
     }
 
@@ -153,7 +152,3 @@ class TeacherController extends Controller
         return redirect()->route('teachers')->with('success', 'Teacher deleted successfully.');
     }
 }
-
-// <div class="col-md-7 col-7">
-// <p>First preference: {{ $teachers->subjects[0]->subject }}</p>
-// </div>

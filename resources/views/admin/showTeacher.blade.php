@@ -51,6 +51,7 @@
                             @else
                             <p>No subject preference are assigned</p>
                             @endif
+
                             <li>
                                 <div class="row">
                                     <div class="col-md-5 col-5">

@@ -16,16 +16,17 @@ trait common
     private function messages()
     {
         return [
-            'name.required' => 'the name must be string with maximum 20 characters',
+            'name.required' => 'the name must be string with max 20 characters',
             'email.required' => 'email is required',
             'image.required' => 'please upload a profile image',
             'fb.required' => 'please enter your facebook url',
             'twitter.required' => 'please enter your twitter url',
             'insta.required' => 'please enter your twitter url',
-            'subject_id.required' => 'please select two subjects',
-            'subject_id.min' => 'you must select exactly two subjects',
-            'subject_id.max' => 'you must select only two subjects',
-            'subject_id.*.exists' => 'the selected subject is invalid',
+            'subjects.required' => 'please select two subjects',
+            'subjects.min' => 'you must select exactly two subjects',
+            'subjects.max' => 'you must select only two subjects',
+            'subjects.distinct' => 'dublicate values',
+            'subjects.*.exists' => 'you must select subjects',
 
         ];
     }
