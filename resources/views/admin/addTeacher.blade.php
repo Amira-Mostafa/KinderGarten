@@ -39,9 +39,16 @@
             <select name="subjects[]" class="form-control" id="">
                 <option value="">select subject</option>
                 @foreach($subjects as $sub)
-                <option value="{{ $sub->id }}">{{ $sub->subject}}</option>
+                <option value="{{ $sub->id }}" {{ old('subjects.0') == $sub->id ? 'selected' : '' }}>{{ $sub->subject}}</option>
                 @endforeach
             </select>
+
+            @if ($errors->has('subjects.0'))
+            <div class="alert alert-warning mt-2" role="alert">
+                {{ $errors->first('subjects.0') }}
+            </div>
+            @endif
+
         </div>
 
         <div class="item form-group">
@@ -49,9 +56,14 @@
             <select name="subjects[]" class="form-control" id="">
                 <option value="">select subject</option>
                 @foreach($subjects as $sub)
-                <option value="{{ $sub->id }}">{{ $sub->subject}}</option>
+                <option value="{{ $sub->id }}" {{old('subjects.1') == $sub->id ? 'selected':''}}>{{ $sub->subject}}</option>
                 @endforeach
             </select>
+            @if ($errors->has('subjects.1'))
+            <div class="alert alert-warning mt-2" role="alert">
+                {{ $errors->first('subjects.1') }}
+            </div>
+            @endif
         </div>
 
 

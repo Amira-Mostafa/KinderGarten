@@ -50,7 +50,12 @@
                 </select>
             </div>
         </div>
+        @error('subjects.' . ($loop->index))
+        <div class="alert alert-warning">{{ $message }}</div>
+        @enderror
         @endforeach
+
+
 
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="fb">Facebook Account link<span class="required">*</span>
