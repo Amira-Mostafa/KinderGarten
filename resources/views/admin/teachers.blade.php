@@ -1,5 +1,6 @@
 @extends('layouts.adminDashboard')
 @section('content')
+
 <hr>
 @if (session('success'))
 <div class="alert alert-success text-center">
@@ -45,6 +46,5 @@
   </table>
 
 </div>
-
 
 @endsection

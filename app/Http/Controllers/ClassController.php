@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Classes;
+
 class ClassController extends Controller
 {
     /**
@@ -11,8 +12,9 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $classes = Classes::get();
-        return view('/classes', compact('classes'));
+
+        // $classes = Classes::get();
+        // return view('admin.classes');
     }
 
     /**
@@ -20,7 +22,6 @@ class ClassController extends Controller
      */
     public function create()
     {
-       
     }
 
     /**

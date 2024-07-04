@@ -17,9 +17,9 @@ class SubjectFactory extends Factory
     public function definition(): array
     {
         return [
-            
+
             'subject' => fake()->word(),
-            'subImage' => fake()->word(),
+            'image' => fake()->word(),
         ];
     }
 }

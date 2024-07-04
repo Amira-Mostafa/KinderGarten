@@ -12,7 +12,7 @@ class Subject extends Model
     protected $fillable = [
 
         'subject',
-        'subImage',
+        'image',
 
     ];
 

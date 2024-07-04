@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->text('subject', 100);
-            $table->string('subImage', 100);
+            $table->string('image', 100);
             $table->timestamps();
         });
     }

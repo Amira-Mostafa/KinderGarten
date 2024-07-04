@@ -1,14 +1,14 @@
 @extends('layouts.template')
 
 @section('title')
-    Teachers Page
+Teachers Page
 @endsection
 
 @section('header')
-    Classes
+Classes
 @endsection
 
 @section('content')
-       @include('includes.pageHeader')
-       @include('includes.classes')
+@include('includes.pageHeader')
+@include('includes.Classes')
 @endsection

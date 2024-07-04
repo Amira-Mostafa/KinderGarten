@@ -64,7 +64,15 @@ Route::middleware(['web'])->group(function () {
     Route::get('trashed', [TeacherController::class, 'trashed'])->name('trashed');
     Route::get('restore/{id}', [TeacherController::class, 'restore']);
     Route::get('finalDelete/{id}', [TeacherController::class, 'forceDelete']);
-});
 
-Route::get('/subjects', [SubjectController::class], 'index')->name('subjects');
-Route::get('/classes', [ClassController::class], 'index')->name('classes');
+    Route::get('subjects', [SubjectController::class, 'index'])->name('subjects');
+    Route::get('addSubject', [SubjectController::class, 'create'])->name('addSubject');
+    Route::Post('storeSubject', [SubjectController::class, 'store'])->name('storeSubject');
+    Route::get('showSubject/{id}', [SubjectController::class, 'show'])->name('showSubject');
+    Route::get('editSubject/{id}', [SubjectController::class, 'edit'])->name('editSubject');
+    Route::put('updateSubject/{id}', [SubjectController::class, 'update'])->name('updateSubject');
+    Route::get('deleteSubject/{id}', [SubjectController::class, 'destroy'])->name('deleteSubject');
+
+    // Route::get('classIndex', [ClassController::class], 'index')->name('classIndex');
+
+});
