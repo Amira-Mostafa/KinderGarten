@@ -1,4 +1,5 @@
 @extends('layouts.adminDashboard')
+@section('title, add Subject')
 @section('content')
 
 
@@ -12,7 +13,7 @@
         <div class="item form-group">
             <label for="subject" class="col-form-label col-md-3 col-sm-3 label-align">Subject<span class="required">*</span></label>
             <div class="col-sm-6">
-                <input type="text" name="subject" class="form-control" value="old('subject')">
+                <input type="text" name="subject" class="form-control" value="{{old('subject')}}">
             </div>
         </div>
 
@@ -20,7 +21,7 @@
             <br>
             <label class="col-form-label col-sm-3 label-align" for="image">subject image <span class="required"></span>*</label>
             <div class="col-sm-6">
-                <input type="file" class="form-control" id="image" name="image" value="old('image')">
+                <input type="file" class="form-control" id="image" name="image" value="{{ old('image')}}">
             </div>
         </div>
 
@@ -33,4 +34,5 @@
     </form>
 </div>
 
+@endsection
 @endsection

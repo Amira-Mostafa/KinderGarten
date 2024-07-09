@@ -61,12 +61,20 @@ class SubjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
     public function update(Request $request, string $id)
     {
+        $data = [
+            'subject' => $request->subject,
+        ];
+
         if ($request->hasFile('image')) {
-            $request['image'] = $this->uploadFile($request->image, 'assets/images');
+            $file_name = $this->uploadFile($request->image, 'assets/images');
+            $data['image'] = $file_name;
         }
-        Subject::where('id', $id)->update($request);
+
+        Subject::where('id', $id)->update($data);
+        return redirect()->route('subjects')->with('success, Subject was updated successfully');
     }
 
     /**

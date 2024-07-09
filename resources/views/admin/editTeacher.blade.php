@@ -1,5 +1,5 @@
 @extends('layouts.adminDashboard')
-@section('title, Add Teacher')
+@section('title, edit Teacher')
 @section('content')
 
 
@@ -138,8 +138,6 @@
 
 </form>
 </div>
-
-
 
 @endsection
 @endsection

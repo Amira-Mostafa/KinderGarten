@@ -10,14 +10,14 @@
 
             <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
                 <div class="team-single-img">
-                    <img src="{{ asset('assets/images/' . $subjects->image)}}" class="img-fluid" alt="{{ $subjects->name}}">
+                    <img src="{{ asset('assets/images/' . $teachers->image)}}" class="img-fluid" alt="{{ $teachers->name}}">
                 </div>
 
             </div>
 
             <div class="col-lg-8 col-md-7">
                 <div class="team-single-text padding-50px-left sm-no-padding-left">
-                    <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $subjects->subject }}</h4>
+                    <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ $teachers->name }}</h4>
                     <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>
                     <div class="contact-info-section margin-40px-tb">
                         <ul class="list-style9 no-margin">
@@ -29,7 +29,7 @@
                                         <strong class="margin-10px-left text-orange">Email</strong>
                                     </div>
                                     <div class="col-md-7 col-7">
-                                        <p>{{ $subjects->subject }}</p>
+                                        <p>{{ $teachers->email }}</p>
                                     </div>
                                 </div>
                             </li>

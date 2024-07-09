@@ -2,16 +2,14 @@
 
 
 @section('title')
-    Testmonial Page
+Testmonial Page
 @endsection
 
 @section('header')
-    Testimonials
+Testimonials
 @endsection
 
 @section('content')
-    @include('includes.PageHeader')
-    @include('includes.testimonial')
+@include('includes.PageHeader')
+@include('includes.testimonial')
 @endsection
-
-

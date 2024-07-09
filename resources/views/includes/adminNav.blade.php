@@ -17,6 +17,8 @@
                     <a href="{{ route('addTeacher') }}" class="dropdown-item">add teacher</a>
                     <a href="{{ route('subjects') }}" class="dropdown-item">subjects</a>
                     <a href="{{ route('addSubject') }}" class="dropdown-item">addSubject</a>
+                    <a href="{{ route('testimonials') }}" class="dropdown-item">testimonials</a>
+                    <a href="{{ route('addTestimonial') }}" class="dropdown-item">addTestimonials</a>
                     <a href="#" class="dropdown-item">classes</a>
                     <a href="#" class="dropdown-item">add class</a>
                     <a href="{{ route('trashed') }}" class="dropdown-item">droped items</a>

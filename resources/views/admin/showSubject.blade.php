@@ -1,5 +1,5 @@
 @extends('layouts.adminDashboard')
-@section('title, Show Teacher')
+@section('title, Show Subject')
 @section('content')
 
 <hr>

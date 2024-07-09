@@ -13,8 +13,8 @@ class ClassController extends Controller
     public function index()
     {
 
-        // $classes = Classes::get();
-        // return view('admin.classes');
+        $classes = Classes::get();
+        return view('admin.classes');
     }
 
     /**
