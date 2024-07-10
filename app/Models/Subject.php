@@ -15,6 +15,10 @@ class Subject extends Model
         'image',
 
     ];
+    public function classes()
+    {
+        return $this->hasMany(Classes::class);
+    }
 
 
 
@@ -22,7 +26,7 @@ class Subject extends Model
     {
 
         return $this->belongsToMany(Subject::class, 'teacher_subject', 'teacher_id', 'subject_id')
-            ->withPivot('preference', 'price', 'ageGroup', 'time', 'capacity', 'active')->orderBy('preference', 'asc')
+            ->withPivot('preference')->orderBy('preference', 'asc')
             ->as('class');
     }
 }

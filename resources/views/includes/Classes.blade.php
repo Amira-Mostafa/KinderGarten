@@ -6,47 +6,51 @@
              <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
          </div>
          <div class="row g-4">
+             @foreach($classes as $class)
              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                  <div class="classes-item">
                      <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                         <img class="img-fluid rounded-circle" src="{{ asset('assets/img/classes-1.jpg') }}" alt="">
+                         <img class="img-fluid rounded-circle" src="{{ asset('assets/images/' . $class->subject->image) }}" alt="{{ $class->subject->subject }}">
                      </div>
 
                      <div class="bg-light rounded p-4 pt-5 mt-n5">
-                         <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Drawing</a>
+                         <a class="d-block text-center h3 mt-3 mb-4" href=""></a>
                          <div class="d-flex align-items-center justify-content-between mb-4">
                              <div class="d-flex align-items-center">
-                                 <img class="rounded-circle flex-shrink-0" src="{{ asset('assets/img/user.jpg') }}" alt="" style="width: 45px; height: 45px;">
+                                 <img class="rounded-circle flex-shrink-0" src="{{ asset('assets/images/' . $class->teacher->image) }}" alt="{{ $class->teacher->name}}" style="width: 45px; height: 45px;">
                                  <div class="ms-3">
-                                     <h6 class="text-primary mb-1">Jhon Doe</h6>
-                                     <small>Teacher</small>
+                                     <h6 class="text-primary mb-1">{{ $class->subject->subject}}</h6>
+                                     <small>{{ $class->teacher->name}}</small>
                                  </div>
                              </div>
-                             <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                             <span class="bg-primary text-white rounded-pill py-2 px-3" href="">{{ $class->price}}$</span>
                          </div>
                          <div class="row g-1">
                              <div class="col-4">
                                  <div class="border-top border-3 border-primary pt-2">
                                      <h6 class="text-primary mb-1">Age:</h6>
-                                     <small>3-5 Years</small>
+                                     <small>{{$class->ageGroup}} Years</small>
                                  </div>
                              </div>
                              <div class="col-4">
                                  <div class="border-top border-3 border-success pt-2">
                                      <h6 class="text-success mb-1">Time:</h6>
-                                     <small>9-10 AM</small>
+                                     <small>{{$class->start}} : {{$class->end}} AM</small>
                                  </div>
                              </div>
                              <div class="col-4">
                                  <div class="border-top border-3 border-warning pt-2">
                                      <h6 class="text-warning mb-1">Capacity:</h6>
-                                     <small>30 Kids</small>
+                                     <small>{{$class->capacity}} Kids</small>
                                  </div>
                              </div>
                          </div>
+
                      </div>
                  </div>
              </div>
+
+             @endforeach
 
 
          </div>

@@ -3,18 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use App\Models\Subject;
 use App\Models\Classes;
+use App\Trait\common;
 
 class ClassController extends Controller
 {
+    use common;
     /**
      * Display a listing of the resource.
      */
+    public function getTeachers($subjectId)
+    {
+        // // Fetch teachers who can teach the selected subject
+        // $teachers = Subject::find($subjectId)->teachers()->get();
+        // return response()->json($teachers);
+    }
+
     public function index()
     {
-
-        $classes = Classes::get();
-        return view('admin.classes');
+        $classes = Classes::with('subject', 'teacher')->get();
+        return view('admin.classes', compact('classes'));
     }
 
     /**
@@ -22,6 +32,10 @@ class ClassController extends Controller
      */
     public function create()
     {
+        $classes = Classes::get();
+        $subjects = Subject::get();
+        $teachers = Teacher::get();
+        return view('admin.addClass', compact('teachers', 'subjects', 'classes'));
     }
 
     /**
@@ -29,7 +43,18 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = $this->messages();
+        $data = $request->validate([
+            'teacher_id' => 'required',
+            'subject_id' => 'required',
+            'price' => 'required',
+            'ageGroup' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+            'capacity' => 'required',
+        ], $message);
+        Classes::create($data);
+        return redirect()->route('classes')->with('success, class was saved successfully');
     }
 
     /**
@@ -37,7 +62,8 @@ class ClassController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $classes = Classes::with('subject', 'teacher')->findOrFail($id);
+        return view('admin.showClass', compact('classes'));
     }
 
     /**
@@ -45,7 +71,10 @@ class ClassController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $subjects = Subject::select('id', 'subject')->get();
+        $teachers = Teacher::select('id', 'name')->get();
+        $classes = Classes::with('teacher', 'subject')->findOrFail($id);
+        return view('admin.editClass', compact('classes', 'teachers', 'subjects'));
     }
 
     /**
@@ -53,7 +82,18 @@ class ClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'teacher_id' => 'sometimes',
+            'subject_id' => 'sometimes',
+            'price' => 'sometimes',
+            'ageGroup' => 'sometimes',
+            'start' => 'sometimes',
+            'end' => 'sometimes',
+            'capacity' => 'sometimes',
+        ]);
+        $data['active'] = isset($request->active);
+        Classes::findOrFail($id)->update($data);
+        return redirect()->route('classes')->with('success, data is updated successfully');
     }
 
     /**
@@ -61,6 +101,7 @@ class ClassController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Classes::findOrFail($id)->delete();
+        return redirect()->route('classes')->with('success, class is deleted successfully');
     }
 }

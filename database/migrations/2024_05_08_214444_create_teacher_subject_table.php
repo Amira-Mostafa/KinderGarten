@@ -16,11 +16,7 @@ return new class extends Migration
             $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->integer('preference');
-            $table->float('price')->nullable();
-            $table->char('ageGroup')->nullable();
-            $table->time('time')->nullable();
-            $table->integer('capacity')->nullable();
-            $table->boolean('active')->default(0);
+
             $table->timestamps();
         });
     }
@@ -35,5 +31,6 @@ return new class extends Migration
         //     $table->dropForeign(['teacher_id']);
         //     $table->dropForeign(['subject_id']);
         // });
+        // ->nullable()
     }
 };

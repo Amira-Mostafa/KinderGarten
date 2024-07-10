@@ -20,7 +20,6 @@
                 </div>
                 @enderror
             </div>
-
             <div class="item form-group">
                 <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email<span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 ">
@@ -33,26 +32,22 @@
                 </div>
             </div>
         </div>
+        <div class="item form-group col-md-6 col-sm-6">
 
-        <div class="item form-group">
-            <label for="subject_1" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 1<span class="required">*</span></label>
+            <label for="subject_1" class="col-form-label col-md-6 col-sm-6 label-align">First Prefrence<span class="required">*</span></label>
             <select name="subjects[]" class="form-control" id="">
                 <option value="">select subject</option>
                 @foreach($subjects as $sub)
-                <option value="{{ $sub->id }}" {{ old('subjects.0') == $sub->id ? 'selected' : '' }}>{{ $sub->subject}}</option>
+                <option value=" {{ $sub->id }}" {{ old('subjects.0') == $sub->id ? 'selected' : '' }}>{{ $sub->subject}}</option>
                 @endforeach
             </select>
-
             @if ($errors->has('subjects.0'))
             <div class="alert alert-warning mt-2" role="alert">
                 {{ $errors->first('subjects.0') }}
             </div>
             @endif
 
-        </div>
-
-        <div class="item form-group">
-            <label for="subject" class="col-form-label col-md-3 col-sm-3 label-align">Subject Prefrence 2<span class="required">*</span></label>
+            <label for="subject" class="col-form-label col-md-6 col-sm-6 label-align">Second Prefrence<span class="required">*</span></label>
             <select name="subjects[]" class="form-control" id="">
                 <option value="">select subject</option>
                 @foreach($subjects as $sub)
@@ -65,9 +60,6 @@
             </div>
             @endif
         </div>
-
-
-
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="fb">Facebook Account link<span class="required">*</span>
             </label>
@@ -79,34 +71,31 @@
                 </div>
                 @enderror
             </div>
-        </div>
-
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="twitter">Twitter Account link <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input type="link" id="user-link" name="twitter" value="{{old('twitter')}}" class="form-control">
-                @error('twitter')
-                <div class="alert alert-warning">
-                    {{ $message }}
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="twitter">Twitter Account link <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="link" id="user-link" name="twitter" value="{{old('twitter')}}" class="form-control">
+                    @error('twitter')
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
-                @enderror
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Instagram Account link <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="link" id="user-link" name="insta" class="form-control" value="{{old('insta')}}">
+                    @error('insta')
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
             </div>
         </div>
-
-        <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Instagram Account link <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 ">
-                <input type="link" id="user-link" name="insta" class="form-control" value="{{old('insta')}}">
-                @error('insta')
-                <div class="alert alert-warning">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-        </div>
-
         <div class="item form-group">
             <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Profile Image <span class="required">*</span>
                 <div class="">

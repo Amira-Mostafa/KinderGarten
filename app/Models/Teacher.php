@@ -23,12 +23,17 @@ class Teacher extends Model
 
     ];
 
+    public function classes()
+    {
+        return $this->hasMany(Classes::class);
+    }
+
     public function subjects()
     {
 
 
         return $this->belongsToMany(Subject::class, 'teacher_subject', 'teacher_id', 'subject_id')
-            ->withPivot('preference', 'price', 'ageGroup', 'time', 'capacity', 'active')->orderBy('preference', 'asc')
+            ->withPivot('preference')->orderBy('preference', 'asc')
             ->as('class');
     }
 

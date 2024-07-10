@@ -16,6 +16,15 @@ trait common
     private function messages()
     {
         return [
+            //validation of the classes
+            'teacher_id.required' => 'required',
+            'subject_id.required' => 'required',
+            'price.required' => 'required',
+            'age_group.required' => 'required',
+            'start.required' => 'required',
+            'end.required' => 'required',
+            'capacity.required' => 'required',
+            //validation of the teachers
             'name.required' => 'the name must be string with max 20 characters',
             'name.max' => 'The name may not be greater than 20 characters.',
             'email.required' => 'email is required',

@@ -16,66 +16,6 @@ use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isTeacher;
 use App\Http\Middleware\isNormal;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware(['auth', 'verified']);
-
-
-// Route::get('teacher', function () {
-//     return view('teacher');
-// })->middleware(['auth', 'verified'])->name('teacher');
-
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
-
-Auth::routes();
-
-Route::get('/adminDashboard', [HomeController::class, 'admin'])->middleware(['auth', 'isAdmin']);
-
-//Route::get('/becomeATeacher', [HomeController::class, 'dashboard'])->name('dashboard');
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ],
-    function () {
-        Route::fallback([MainController::class, 'showNotFound']);
-        Route::get('index', [MainController::class, 'index'])->name('home');
-        Route::get('aboutUs', [MainController::class, 'aboutUs'])->name('aboutUs');
-        Route::get('ourClasses', [MainController::class, 'classes'])->name('ourClasses');
-        Route::get('facilities', [MainController::class, 'facilities'])->name('facilities');
-        Route::get('team', [MainController::class, 'team'])->name('team');
-        Route::get('callToAction', [MainController::class, 'callToAction'])->name('callToAction');
-        Route::get('appointment', [MainController::class, 'appointment'])->name('appointment');
-        Route::get('testimonial', [MainController::class, 'testimonial'])->name('testimonial');
-        Route::get('contact', [MainController::class, 'contact'])->name('contact');
-    }
-);
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-
-// Route::get('contact', [MainController::class, 'contactUs'])->name('contact');
-// Route::post('send-email', [ContactController::class, 'send'])->name('sendEmail');
-
-
-// Auth::routes(['verify' => true]);
-// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::view('/dashboard', 'dashboard');
 Route::middleware(['web'])->group(function () {
     Route::get('/get-teachers/{subjectId}', [ClassController::class, 'getTeachers']);
     Route::get('teachers', [TeacherController::class, 'index'])->name('teachers');

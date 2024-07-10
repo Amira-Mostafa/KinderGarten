@@ -10,7 +10,7 @@
         <div class="navbar-nav mx-auto">
             <a href="{{ route('home') }}" class="nav-item nav-link active">{{__('nav.Home')}}</a>
             <a href="{{ route('aboutUs') }}" class="nav-item nav-link">{{__('nav.About us')}}</a>
-            <a href="{{ route('classes') }}" class="nav-item nav-link">{{__('nav.Classes')}}</a>
+            <a href="{{ route('ourClasses') }}" class="nav-item nav-link">{{__('nav.Classes')}}</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('nav.Pages')}}</a>
                 <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">

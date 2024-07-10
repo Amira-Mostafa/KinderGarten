@@ -11,5 +11,5 @@ Testimonials
 
 @section('content')
 @include('includes.PageHeader')
-@include('includes.testimonial')
+@include('includes.Testimonial')
 @endsection

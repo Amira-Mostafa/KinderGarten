@@ -25,7 +25,7 @@
             @endforeach
 
         </div>
-        
+
     </div>
 </div>
 <!-- Team End -->
