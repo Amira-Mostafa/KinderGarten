@@ -73,7 +73,7 @@ Route::group(
 
 
 // Auth::routes(['verify' => true]);
-// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::view('/dashboard', 'dashboard');
 Route::middleware(['web'])->group(function () {
