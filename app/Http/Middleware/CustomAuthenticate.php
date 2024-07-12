@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class isNormal
+class CustomAuthenticate
 {
     /**
      * Handle an incoming request.
@@ -16,24 +16,11 @@ class isNormal
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
-        if(!auth()->check()){
-
+        if (!Auth::check()) {
+            session()->flash('error', 'You need to log in to access this page.');
+            session(['url.intended' => $request->url()]);
             return redirect()->route('login');
-         }
-         $userRole = Auth::user()->is_Admin;
- 
-         if($userRole == 3){
-             return $next($request);
-         }
- 
-         if($userRole == 2){
-             return redirect()->route('teacher');
-         }
-         if($userRole == 1){
-            return redirect()->route('admin');
-
-       
+        }
+        return $next($request);
     }
-}
 }

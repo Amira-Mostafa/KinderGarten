@@ -18,8 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
   ->withMiddleware(function (Middleware $middleware) {
     $middleware->alias([
       'isAdmin' => isAdmin::class,
-      'isNormal' => isNormal::class,
-      'isTeacher' => isTeacher::class,
+      'custom.auth' => \App\Http\Middleware\CustomAuthenticate::class,
       'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
       'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
       'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,

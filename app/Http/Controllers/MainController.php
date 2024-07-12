@@ -15,27 +15,27 @@ class MainController extends Controller
 
     public function index(): view
     {
-        $teachers = Teacher::with('subjects')->where('active', 1)->get();
-        $testimonial = Testimonial::where('active', 1)->get();
+        $teachers = Teacher::with('subjects')->where('active', 1)->limit(3)->get();
+        $testimonial = Testimonial::where('active', 1)->limit(4)->get();
         $classes = Classes::with('subject', 'teacher')->where('active', 1)->get();
         return view('index', compact('testimonial', 'teachers', 'classes'));
     }
 
     public function testimonial()
     {
-        $testimonial = Testimonial::where('active', 1)->get();
+        $testimonial = Testimonial::where('active', 1)->limit(4)->get();
         return view('testimonial', compact('testimonial'));
     }
 
     public function team()
     {
-        $teachers = Teacher::where('active', 1)->get();
+        $teachers = Teacher::where('active', 1)->limit(3)->get();
         return view('team', compact('teachers'));
     }
 
     public function classes()
     {
-        $classes = Classes::with('subject', 'teacher')->where('active', 1)->get();
+        $classes = Classes::with('subject', 'teacher')->where('active', 1)->limit(6)->get();
         return view('classes', compact('classes'));
     }
 
@@ -61,5 +61,9 @@ class MainController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+    public function notFound()
+    {
+        return view('notFound');
     }
 }

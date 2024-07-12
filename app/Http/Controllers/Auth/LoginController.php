@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+
 class LoginController extends Controller
 {
     /*
@@ -26,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'home';
 
     /**
      * Create a new controller instance.
@@ -39,34 +43,37 @@ class LoginController extends Controller
     }
 
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $input = $request->all();
-        $this->validate ($request,[
+        $this->validate($request, [
             'email' => 'required',
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))){
-           $roleType = auth()->user()->is_admin;
-                if($roleType == 1){
-                return redirect('/adminDashboard');
-                // }elseif($roleType == 2){
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            $roleType = auth()->user()->is_admin;
+            if ($roleType == 1) {
+                // return redirect()->route('dashboard');
+                return redirect()->route('dashboard');
+                // } elseif ($roleType == 2) {
                 //     return redirect()->route('teacher');
-                }elseif($roleType == 3){
-                    return redirect('/dashboard');
-                }else{
-                 return to_route('login')->with('input is invalid');
-                }
+            } elseif ($roleType == 3) {
+                // return redirect()->intended(LaravelLocalization::localizeURL(route('home')));
+                $urlIntended = $request->input('url_intended', route('home'));
+                return redirect()->intended($urlIntended);
+                // return redirect()->intended(route('home'));
+                // return $next($request);
+                // return redirect()->route('home');
+            } else {
+                // return redirect()->intended(route('/login'));
+                return to_route('guest')->with('input is invalid');
+            }
         }
-     }
-
+    }
 }
     
-
-
-
 // if(!auth()->check()){
-
         //     return redirect()->route('login');
         //  }
         //  $userRole = Auth::user()->is_admin;
@@ -77,5 +84,3 @@ class LoginController extends Controller
         //  }elseif($userRole == 3){
         //     return redirect()->route('dashboard');
         //  }
-             
-         
