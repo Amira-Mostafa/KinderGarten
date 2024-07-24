@@ -53,11 +53,14 @@ class MainController extends Controller
     {
         return view('call-To-action');
     }
+    public function becomeATeacher()
+    {
+        return view('includes.becomeATeacher');
+    }
     public function appointment()
     {
         return view('appointment');
     }
-
     public function contact()
     {
         return view('contact');

@@ -16,16 +16,9 @@ trait common
     private function messages()
     {
         return [
-            //validation of the classes
-            'teacher_id.required' => 'required',
-            'subject_id.required' => 'required',
-            'price.required' => 'required',
-            'age_group.required' => 'required',
-            'start.required' => 'required',
-            'end.required' => 'required',
-            'capacity.required' => 'required',
+
             //validation of the teachers
-            'name.required' => 'the name must be string with max 20 characters',
+            'name.required' => 'the name is required',
             'name.max' => 'The name may not be greater than 20 characters.',
             'email.required' => 'email is required',
             'email.email' => 'The email must be a valid email address.',
@@ -41,6 +34,14 @@ trait common
             'subjects.max' => 'you must select only two subjects',
             'subjects.*.exists' => 'you must select subjects',
             'subjects.*.distinct' => 'Each subject must be unique. Please select different subjects.',
+            //validation of the classes
+            'teacher_id.required' => 'required',
+            'subject_id.required' => 'required',
+            'price.required' => 'required',
+            'age_group.required' => 'required',
+            'start.required' => 'required',
+            'end.required' => 'required',
+            'capacity.required' => 'required',
 
         ];
     }

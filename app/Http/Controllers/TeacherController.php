@@ -18,6 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
+
         $teachers = Teacher::with('subjects')->get();
         return view('admin.teachers', compact('teachers'));
     }

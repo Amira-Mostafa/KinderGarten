@@ -2,6 +2,7 @@
 @section('title, Add Teacher')
 @section('content')
 
+<br><br>
 <div class="container px-4 px-lg-5 py-lg-0">
     <h2 class="ml-50">Become a Teacher</h2>
     <br />
@@ -46,7 +47,6 @@
                 {{ $errors->first('subjects.0') }}
             </div>
             @endif
-
             <label for="subject" class="col-form-label col-md-6 col-sm-6 label-align">Second Prefrence<span class="required">*</span></label>
             <select name="subjects[]" class="form-control" id="">
                 <option value="">select subject</option>
@@ -97,15 +97,15 @@
             </div>
         </div>
         <div class="item form-group">
-            <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Profile Image <span class="required">*</span>
-                <div class="">
-                    <input type="file" class="form-control" id="image" placeholder="Enter Image" value="{{old('image')}}" name="image">
-                    @error('image')
-                    <div class="alert alert-warning">
-                        {{ $message }}
-                    </div>
-                    @enderror
+            <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Profile Image <span class="required">*</span></label>
+            <div class="col-md-6 col-sm-6 ">
+                <input type="file" class="form-control" id="image" placeholder="Enter Image" value="{{old('image')}}" name="image">
+                @error('image')
+                <div class="alert alert-warning">
+                    {{ $message }}
                 </div>
+                @enderror
+            </div>
         </div>
 
         <div class="ln_solid"></div>

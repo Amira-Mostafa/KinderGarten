@@ -2,7 +2,6 @@
 @section('title, Show Teacher')
 @section('content')
 
-<hr>
 <br><br>
 <div class="container">
     <div class="team-single">
@@ -12,7 +11,6 @@
                 <div class="team-single-img">
                     <img src="{{ asset('assets/images/' . $teachers->image)}}" class="img-fluid" alt="{{ $teachers->name}}">
                 </div>
-
             </div>
 
             <div class="col-lg-8 col-md-7">

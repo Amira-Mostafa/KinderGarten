@@ -203,7 +203,7 @@ return [
      */
 
     'icons' => [
-        'bs'  => \Orchid\Support\BootstrapIconsPath::getFolder(),
+        // 'bs'  => \Orchid\Support\BootstrapIconsPath::getFolder(),
     ],
 
     /*
@@ -316,6 +316,6 @@ return [
      |
      */
 
-    'provider' => \App\Orchid\PlatformProvider::class,
+    // 'provider' => \App\Orchid\PlatformProvider::class,
 
 ];

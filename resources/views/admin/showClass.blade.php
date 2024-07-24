@@ -2,7 +2,7 @@
 @section('title, Show Class')
 @section('content')
 
-<hr>
+
 <br><br>
 <div class="container">
     <div class="team-single">

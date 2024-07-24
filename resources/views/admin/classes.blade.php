@@ -1,7 +1,6 @@
 @extends('layouts.adminDashboard')
 @section('content')
 
-<hr>
 @if (session('success'))
 <div class="alert alert-success text-center">
     {{ session('success') }}
@@ -10,7 +9,7 @@
 
 <br><br>
 <div class="container">
-    <h2>Teachers Applications list</h2>
+    <h2>Classes Applications list</h2>
     <br>
     <table class="table">
         <thead>

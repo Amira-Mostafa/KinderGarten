@@ -2,6 +2,7 @@
 @section('title, Edit Class')
 @section('content')
 
+<br><br>
 <div class="container px-4 px-lg-5 py-lg-0 ">
     <h2 class="ml-50 offset-md-3">Edit Class</h2>
     <br />

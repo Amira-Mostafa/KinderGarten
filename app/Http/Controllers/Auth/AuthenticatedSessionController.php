@@ -49,7 +49,5 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
         // Redirect to the localized home route
         return redirect(LaravelLocalization::localizeURL(route('home')));
-
-        // return redirect('/'); //the old rediret
     }
 }

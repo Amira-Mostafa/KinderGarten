@@ -2,7 +2,7 @@
 @section('title, add Subject')
 @section('content')
 
-
+<br><br>
 <div class="container px-4 px-lg-5 py-lg-0">
     <h2 class="ml-50">Insert Subject</h2>
     <br />

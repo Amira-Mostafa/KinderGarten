@@ -6,7 +6,7 @@
     {{ session('success') }}
 </div>
 @endif
-
+<br><br>
 <div class="container">
     <h1>Subjects List</h1>
     <table class="table">

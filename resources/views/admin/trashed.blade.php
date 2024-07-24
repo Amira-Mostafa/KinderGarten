@@ -1,10 +1,7 @@
 @extends('layouts.adminDashboard')
-
-
 @section('content')
 
-<hr>
-<br>
+<br><br>
 <div class="container">
     <h2>Teachers Drop List</h2>
     <br>

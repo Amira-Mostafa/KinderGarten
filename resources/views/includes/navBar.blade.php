@@ -24,8 +24,13 @@
             <div class="nav-item dropdown">
                 <a href="{{ route('contact') }}" class="nav-item nav-link">{{__('nav.Contact Us')}}</a>
             </div>
-
-
+            @auth
+            @if (Auth::check() && Auth::user()->is_admin == 1)
+            <li class="nav-item dropdown">
+                <a href="{{ route('dashboard') }}" class="nav-link">{{ __('Dashboard') }}</a>
+            </li>
+            @endif
+            @endauth
         </div>
         <ul class="navbar-nav ms-auto">
             <!-- Authentication Links -->
@@ -66,9 +71,6 @@
             <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"> Arablic</a>
         </div>
     </div>
-
-
-
 </nav>
 
 

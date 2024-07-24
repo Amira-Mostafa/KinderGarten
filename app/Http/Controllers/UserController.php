@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;    
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // public function UserDashboard(){
-    //     return view('user.dashboard');
+    // public function UserDashboard()
+    // {
+    //     //     return view('user.dashboard');
     // }
 }

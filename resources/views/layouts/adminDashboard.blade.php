@@ -5,17 +5,24 @@
 
 
 <body>
+
     <div class="container-xxl bg-white p-0">
-        @include('includes.adminNav')
-        <!-- @include('includes.adminSidebar') -->
+        @include('includes.navBar')
+        <div class="row">
 
 
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    @include('includes.adminSidebar')
+                </div>
+            </div>
+            <div class="col-md-8 right_col">
+                <div class="right_col scroll-view">
+                    @yield('content')
+                </div>
+            </div>
 
-        @yield('content')
-
-
-
-
+        </div>
         @include('includes.Footer')
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
