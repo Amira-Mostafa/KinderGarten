@@ -39,29 +39,45 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->only('logout');
     }
 
 
     public function login(Request $request)
     {
-        $input = $request->all();
+        $data = $request->all();
+
         $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|string',
         ]);
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            $roleType = auth()->user()->is_admin;
+
+        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
+            $roleType = Auth::user()->is_admin;
             if ($roleType == 1) {
                 return redirect()->route('dashboard');
-                // } elseif ($roleType == 2) {
-                //     return redirect()->route('teacher');
             } elseif ($roleType == 3) {
                 $urlIntended = $request->input('url_intended', route('home'));
                 return redirect()->intended($urlIntended);
             } else {
-                return to_route('guest')->with('input is invalid');
+                Auth::logout();
+                return redirect()->route('login')->with('status', 'danger')->with('message', 'Unauthorized access.');
             }
+        } else {
+            return redirect()->route('login')->with('status', 'danger')->with('message', 'Invalid email or password.');
         }
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

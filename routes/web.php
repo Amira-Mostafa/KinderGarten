@@ -3,10 +3,6 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MainController;
-use App\Models\Contact;
-use App\Http\Controllers\UserController;
-use App\Mail\ContactMail;
-use Illuminate\Support\Facades\Mail;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -19,21 +15,7 @@ require __DIR__ . '/auth.php';
 Route::get('/not-found', [MainController::class, 'notFound'])->name('notFound');
 Auth::routes(['verify' => true]); //it has all routes related to auth
 
-// Route::get('/test-env', function () {
-//     dd([
-//         'MAIL_FROM_ADDRESS' => env('MAIL_FROM_ADDRESS'),
-//         'MAIL_TO_ADDRESS' => env('MAIL_TO_ADDRESS'),
-//         'DB_DATABASE' => env('DB_DATABASE'),
-//         'MAIL_HOST' => env('MAIL_HOST'),
-//         'DB_DATABASE' => env('DB_DATABASE'),
-//     ]);
-// });
 
-Route::get('/test-email', function () {
-    // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail());
-    // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($contact));;
-    return 'Email sent successfully!';
-});
 
 Route::group(
     [

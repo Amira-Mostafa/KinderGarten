@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Http\RedirectResponse;
 
 class VerificationController extends Controller
 {
@@ -34,8 +36,21 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['verify']);
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+
+    protected function verified(\Illuminate\Http\Request $request): RedirectResponse
+    {
+        // Fire the Verified event
+        event(new Verified($request->user()));
+
+        // Log the user out
+        auth()->logout();
+
+        // Redirect to login page with a success message
+        return redirect()->route('login')->with('status', 'success')->with('message', 'Your email has been verified. You can now log in.');
     }
 }

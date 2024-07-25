@@ -44,10 +44,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-        // Auth::login($user);
-
-        return redirect(route('login'));
-        // return redirect(LaravelLocalization::localizeURL(route('home')));
+        // return redirect()->route('login');
+        Auth::login($user);
+        return redirect(LaravelLocalization::localizeURL(route('home')));
     }
 }

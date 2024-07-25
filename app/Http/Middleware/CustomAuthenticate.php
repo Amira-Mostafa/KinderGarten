@@ -3,9 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CustomAuthenticate
 {
@@ -17,7 +19,7 @@ class CustomAuthenticate
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            session()->flash('error', 'You need to log in to access this page.');
+            Session::flash('status', 'You need to log in to access this page.');
             session(['url.intended' => $request->url()]);
             return redirect()->route('login');
         }

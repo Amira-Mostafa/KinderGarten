@@ -94,6 +94,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        Classes::factory()->create();
+        // Classes::factory()->create();
     }
 }
