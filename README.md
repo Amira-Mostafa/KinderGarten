@@ -17,6 +17,7 @@ A simple kinderGarten website built using php/laravel and Javascript along side 
 - Composer
 - MySQL or MariaDB
 - Node.js and NPM (for frontend assets)
+- MailHog installation
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -70,15 +71,24 @@ import the attached database file into your server
 
 2. Configure .env
 
-Update your .env file with the database credentials:
+Update your .env file with the database credentials and mail configurations:
 
 ```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=blog_application 
+DB_DATABASE=kindergarten
 DB_USERNAME=root
 DB_PASSWORD=
+
+MAIL_MAILER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="noreply@kinderGarten.com"
+MAIL_FROM_NAME="kinderGarten"
 ```
 
 3. Run Migrations and Seeders
