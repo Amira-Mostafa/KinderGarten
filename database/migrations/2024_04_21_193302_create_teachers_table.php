@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('email');
-            //$table->foreignId('subject_id')->constrained('subjects');
             $table->string('fb');
             $table->string('twitter')->nullable();
             $table->string('insta')->nullable();

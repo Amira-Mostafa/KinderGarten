@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        // User::factory(10)->create();
         User::factory()->create([
             'name' => 'admin ',
             'email' => 'admin@gmail.com',
@@ -84,6 +84,7 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+
         Testimonial::factory()->create(
             [
                 'name' => 'amira mostafa',
@@ -94,6 +95,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Classes::factory()->create();
+        Classes::factory()->create();
     }
 }

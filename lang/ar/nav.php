@@ -22,7 +22,8 @@ return [
     'Become A Teacher' => 'كن مدرس',
     'Make Appointment' => 'احجز موعداً',
     'Testimonial' => 'عملائنا',
-    'Join Us' => 'التسجيل',
+    'Login' => 'الدخول',
+    'Register' => 'التسجيل',
     '' => 'Next &raquo;',
 
 ];

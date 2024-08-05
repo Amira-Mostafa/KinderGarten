@@ -8,15 +8,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\RouteFileRegistrar;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 require __DIR__ . '/auth.php';
 Route::get('/not-found', [MainController::class, 'notFound'])->name('notFound');
 Auth::routes(['verify' => true]); //it has all routes related to auth
-
-
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),

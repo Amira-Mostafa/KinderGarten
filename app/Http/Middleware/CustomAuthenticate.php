@@ -19,9 +19,9 @@ class CustomAuthenticate
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            Session::flash('status', 'You need to log in to access this page.');
+            // Session::flash('status', 'danger');
             session(['url.intended' => $request->url()]);
-            return redirect()->route('login');
+            return redirect()->route('login')->with('status', 'warning')->with('message', 'You need to log in to access this page.');
         }
         return $next($request);
     }
